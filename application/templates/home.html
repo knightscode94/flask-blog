@@ -1,12 +1,14 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 {% block body_content %}
-
+    <h2>Tobi's Blogs</h2>
+    <p>Welcome to my first web app!</p>
+     
     {% for post in posts %}
-        <div>
+       	<div>
             <h3>{{ post.title }}</h3>
-            <p><b> - First name:</b>{{ post.name.first }}</p>
-            <p><b> - Last name:</b>{{ post.name.last }}</p>
-            <p> -- {{ post.content }}</p>
+	    <h4>{{ post.first_name }}
+		    {{ post.last_name }}</h4>
+	    <body>{{post.content }}</body>
         </div>
-    {% endfor %}
-{% endblock %}
+	{% endfor %}
+{% endblock body_content %}

@@ -1,2 +1,4 @@
 Flask==1.1.2
 Jinja2==2.11.2
+Flask-WTF==0.14.3
+WTForms==2.3.1
