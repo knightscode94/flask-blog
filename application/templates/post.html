@@ -5,15 +5,51 @@
             {{ form.hidden_tag() }}
             {{ form.first_name.label }}
             {{ form.first_name }}
-            <br>
+	    {% if form.first_name.errors %}
+        <!-- surround the displayed errors in a error div tag, this can then be styled later to be red etc. -->
+            <div class="error">
+        <!-- for each error in the errors for the first_name input field -->
+            {% for error in form.first_name.errors %}
+        <!-- display the error -->
+            <span>{{ error }}</span>
+        <!-- end the for-loop -->
+            {% endfor %}
+            </div>
+        <!-- end the if statement -->
+            {% endif %}
+	    <br>
             {{ form.last_name.label }}
             {{ form.last_name }}
+	    {% if form.last_name.errors %}
+        <!-- surround the displayed errors in a error div tag, this can then be styled later to be red etc. -->
+            <div class="error">
+        <!-- for each error in the errors for the first_name input field -->
+            {% for error in form.last_name.errors %}
+        <!-- display the error -->
+            <span>{{ error }}</span>
+        <!-- end the for-loop -->
+            {% endfor %}
+            </div>
+        <!-- end the if statement -->
+            {% endif %}
             <br>
             {{ form.title.label }}
             {{ form.title }}
             <br>
             {{ form.content.label }}
             {{ form.content }}
+	    {% if form.content.errors %}
+        <!-- surround the displayed errors in a error div tag, this can then be styled later to be red etc. -->
+            <div class="error">
+        <!-- for each error in the errors for the first_name input field -->
+            {% for error in form.content.errors %}
+        <!-- display the error -->
+            <span>{{ error }}</span>
+        <!-- end the for-loop -->
+            {% endfor %}
+            </div>
+        <!-- end the if statement -->
+            {% endif %}
             <br>
             {{ form.submit }}
         </form>
