@@ -9,6 +9,10 @@ db = SQLAlchemy(app)
 
 from application import routes
 
+from flask_bcrypt import Bcrypt
+
+bcrypt = Bcrypt(app)
+
 from os import getenv
 
 app.config['SECRET_KEY'] = getenv('SECRET_KEY')
