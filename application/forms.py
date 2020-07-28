@@ -4,6 +4,8 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
 from application.models import Users
 from flask_login import current_user
 
+#############create psot######################
+
 class PostForm(FlaskForm):
     title = StringField('Title',
         validators = [
@@ -18,6 +20,8 @@ class PostForm(FlaskForm):
         ]
     )
     submit = SubmitField('Post!')
+
+#######################################
 
 class RegistrationForm(FlaskForm):
     first_name = StringField('First Name',
@@ -57,6 +61,8 @@ class RegistrationForm(FlaskForm):
         if user:
             raise ValidationError('Email already in use')
 
+############################################################
+
 class LoginForm(FlaskForm):
     email = StringField('Email',
         validators=[
@@ -73,6 +79,8 @@ class LoginForm(FlaskForm):
 
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+#############################################################
 
 class UpdateAccountForm(FlaskForm):
     first_name = StringField('First Name',

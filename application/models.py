@@ -2,6 +2,8 @@ from application import db, login_manager
 from flask_login import UserMixin
 from datetime import datetime
 
+########################### post table sql###########################
+
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False, unique=True)
@@ -18,6 +20,8 @@ class Posts(db.Model):
 @login_manager.user_loader
 def load_user(id):
     return Users.query.get(int(id))
+
+#################user table sql################################
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

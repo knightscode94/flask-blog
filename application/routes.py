@@ -4,6 +4,8 @@ from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
 from application.models import Posts, Users
 
+#######################account login############################################
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -20,15 +22,21 @@ def login():
                 return redirect(url_for('home'))
     return render_template('log_in.html', title='Login', form=form)
 
+##############home #####################################################
+
 @app.route('/')
 @app.route('/home')
 def home():
     postData = Posts.query.all()
     return render_template('home.html', title='Home', posts=postData)
 
+##################about page###############################################
+
 @app.route('/about')
 def about():
  return render_template('about.html', title='About')
+
+#################create account###################################
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -48,6 +56,8 @@ def register():
         return redirect(url_for('post'))
     return render_template('register.html', title='Register', form=form)
 
+########################make a post###################################
+
 @app.route('/post', methods=['GET', 'POST'])
 @login_required
 def post():
@@ -66,11 +76,15 @@ def post():
         print(form.errors)
     return render_template('post.html', title='Post', form=form)
 
+####################logout#############################################
+
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+#######################update account##############################################
 
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
@@ -87,6 +101,8 @@ def account():
         form.last_name.data = current_user.last_name
         form.email.data = current_user.email
     return render_template('account.html', title='Account', form=form)
+
+######################delete account###############################
 
 @app.route("/account/delete", methods=["GET", "POST"])
 @login_required
