@@ -3,6 +3,7 @@
 <head>
 <title>{{ title }} Page</title>
 </head>
+<body>
 <strong><nav>
 <ul class="menu">
 <a href="{{ url_for('home') }}">Home</a>
@@ -17,7 +18,6 @@
 {% endif %}
 </ul>
 </nav></strong>
-<body>
 <h1>{{  title  }} Page</h1>
 {% block body_content %}{% endblock %}
 </body>
