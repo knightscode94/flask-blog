@@ -70,3 +70,47 @@ class TestPosts(TestBase):
                     content="Test Content"),
                 follow_redirects=True)
             self.assertIn(b'Test Title', response.data)
+
+#####################################
+##register account
+class TestRegister(TestBase):
+    def test_add_new_user(self):
+        with self.client:
+            response = self.client.post(
+                    '/register',
+                    data=dict(
+                        first_name="Tobi",
+                        last_name="Tobi",
+                        email="tobi@tobi.com",
+                        password="tobi2020",
+                        confirm_password="tobi2020"),
+                    follow_redirects=True)
+            self.assertEqual(response.status_code, 200)
+
+##############################################
+##logout user
+class TestLogout(TestBase):
+    def test_logout(self):
+        with self.client:
+            self.client.post(url_for('login'), data=dict(email = "admin@admin.com", password = "admin2020"),
+                    follow_redirects = True)
+            response = self.client.post(
+                    '/logout',
+                    follow_redirects=True)
+            self.assertEqual(response.status_code, 200)
+
+############################################
+##update account
+class Testupdate(TestBase):
+    def test_update_user(self):
+        with self.client:
+            self.client.post(url_for('login'), data=dict(email = "admin@admin.com", password = "admin2020"),
+                    follow_redirects = True)
+            response = self.client.post(
+                    '/account',
+                    data=dict(first_name="tobi", last_name="tobi", email="tobi@tobi.com"),
+                    follow_redirects = True)
+            self.assertEqual(response.status_code, 200)
+
+#####################################
+##delete account
