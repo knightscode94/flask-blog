@@ -41,7 +41,7 @@ class TestBase(LiveServerTestCase):
     def test_server_is_up_and_running(self):
         response = urlopen("http://localhost:5000")
         self.assertEqual(response.code, 200)
-
+'''
 class TestRegistration(TestBase):
 
     def test_registration(self):
@@ -70,7 +70,7 @@ class TestRegistration(TestBase):
 
         # Assert that browser redirects to login page
         assert url_for('login') in self.driver.current_url
-
+'''
 class TestLogin(TestBase):
     def test_login(self):
         self.driver.find_element_by_xpath("/html/body/a[3]").click()
